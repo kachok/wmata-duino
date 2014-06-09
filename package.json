@@ -26,9 +26,7 @@
         "express": "^4.4.1",
         "logfmt": "^1.1.2"
     },
-    {
-        "engines": {
-            "node": "0.10.x"
-        }
+    "engines": {
+        "node": "0.10.x"
     }
 }
