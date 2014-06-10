@@ -20,12 +20,20 @@ app.get('/orange/efc', function(req, res) {
 
  var url = "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/K05?api_key="+api_key;
 
- http.get(url, function(res) {
-      var arr = JSON.parse(res)
-      res.send(arr);
+ http.get(url, function(res2) {
+	  var body = '';
+	  res2.on('data', function(chunk) {
+	    body += chunk;
+	  });
+	  res2.on('end', function() {
+	    console.log(body);
+      res.send(body);
+
+	  });
+
     }).on('error', function(e) {
       res.send("Error: " + e.message);
- });
+ 	});
 
   //res.send('Vienna, BRD, 10, 20, New Carrollton, ARR, 5, 15');
 });
@@ -33,7 +41,6 @@ app.get('/orange/efc', function(req, res) {
 app.get('/env', function(req, res) {
       res.send(process.env.ENV_VAR);
 });
-
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
