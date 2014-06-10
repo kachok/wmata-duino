@@ -30,6 +30,10 @@ app.get('/orange/efc', function(req, res) {
   //res.send('Vienna, BRD, 10, 20, New Carrollton, ARR, 5, 15');
 });
 
+app.get('/env', function(req, res) {
+      res.send(process.env.ENV_VAR);
+});
+
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
