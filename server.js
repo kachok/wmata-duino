@@ -5,7 +5,7 @@ var app = express();
 
 app.use(logfmt.requestLogger());
 
-
+var api_key="";
 
 app.get('/', function(req, res) {
   res.send('Hello World!');
@@ -15,7 +15,18 @@ app.get('/', function(req, res) {
 // http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=100
 
 app.get('/orange/efc', function(req, res) {
-  res.send('Vienna, BRD, 10, 20, New Carrollton, ARR, 5, 15');
+	//http://api.wmata.com/StationPrediction.svc/json/GetPrediction/A10,A11?api_key=YOUR_API_KEY
+
+ var url = "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/K05?api_key="+api_key;
+
+ http.get(url, function(res) {
+      var arr = JSON.parse(res)
+      res.send(arr);
+    }).on('error', function(e) {
+      res.send("Error: " + e.message);
+ });
+
+  //res.send('Vienna, BRD, 10, 20, New Carrollton, ARR, 5, 15');
 });
 
 
