@@ -5,7 +5,7 @@ var app = express();
 
 app.use(logfmt.requestLogger());
 
-var api_key="";
+var api_key=process.env.API_KEY;
 
 app.get('/', function(req, res) {
   res.send('Hello World!');
