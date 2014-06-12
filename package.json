@@ -1,32 +1,33 @@
 {
-    "name": "wmata-duino",
-    "version": "0.0.0",
-    "description": "Basic proxy for WMATA API for use with Arduino project (deployed on Heroku)",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/kachok/wmata-duino.git"
-    },
-    "keywords": [
-        "wmata",
-        "api",
-        "arduino"
-    ],
-    "author": "Dmitry Kachaev <dmitry.kachaev@gmail.com> (http://github.com/kachok)",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/kachok/wmata-duino/issues"
-    },
-    "homepage": "https://github.com/kachok/wmata-duino",
-    "dependencies": {
-        "express": "^4.4.1",
-        "logfmt": "^1.1.2"
-    },
-    "engines": {
-        "node": "0.10.x"
-    }
+  "name": "wmata-duino",
+  "version": "0.0.0",
+  "description": "Basic proxy for WMATA API for use with Arduino project (deployed on Heroku)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kachok/wmata-duino.git"
+  },
+  "keywords": [
+    "wmata",
+    "api",
+    "arduino"
+  ],
+  "author": "Dmitry Kachaev <dmitry.kachaev@gmail.com> (http://github.com/kachok)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kachok/wmata-duino/issues"
+  },
+  "homepage": "https://github.com/kachok/wmata-duino",
+  "dependencies": {
+    "express": "^4.4.1",
+    "logfmt": "^1.1.2",
+    "underscore": "^1.6.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
 }

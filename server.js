@@ -3,6 +3,7 @@ var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
 var http = require("http");
+var _ = require("underscore");
 
 app.use(logfmt.requestLogger());
 
@@ -14,6 +15,39 @@ app.get('/', function(req, res) {
 
 // Orange - EFC station
 // http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=100
+
+function reformat(data){
+	var str="";
+
+	console.log(data["Trains"]);
+
+	var west, east;
+
+	west = _.where(data["Trains"], {"Group":"2"});
+	east = _.where(data["Trains"], {"Group":"1"});
+
+	console.log(west);
+	console.log(east);
+
+	var west_times=[];
+	var east_times=[];
+
+	var i;
+
+	for (i=0; i<west.length; i++){
+		west_times.push(west[i]["Min"]);
+	}
+	for (i=0; i<east.length; i++){
+		east_times.push(west[i]["Min"]);
+	}
+
+	west_times.sort();
+	east_times.sort();
+
+	str= "Vienna, "+ west_times.join(", ")+", New Carrollton, "+east_times.join(", ");
+
+	return str;
+}
 
 app.get('/orange/efc', function(req, res) {
 	//http://api.wmata.com/StationPrediction.svc/json/GetPrediction/A10,A11?api_key=YOUR_API_KEY
@@ -27,7 +61,8 @@ app.get('/orange/efc', function(req, res) {
 	  });
 	  res2.on('end', function() {
 	    console.log(body);
-      res.send(body);
+	    body=JSON.parse(body);
+      res.send(reformat(body));
 
 	  });
 
