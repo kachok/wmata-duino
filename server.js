@@ -38,7 +38,7 @@ function reformat(data){
 		west_times.push(west[i]["Min"]);
 	}
 	for (i=0; i<east.length; i++){
-		east_times.push(west[i]["Min"]);
+		east_times.push(east[i]["Min"]);
 	}
 
 	west_times.sort();
